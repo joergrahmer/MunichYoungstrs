@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speedcamp Glungezer | Munich Youngsters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --red: #e60000;
+            --orange: #ff6600;
+            --dark-gray: #2a2a2a;
+            --medium-gray: #666666;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, #000000 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L50 50 L0 100 Z M50 0 L100 50 L50 100 Z" fill="rgba(230,0,0,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--orange);
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--red) 0%, var(--orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            color: var(--light-gray);
+        }
+        
+        .hero-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        
+        .hero-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-detail span:first-child {
+            color: var(--orange);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--red) 0%, var(--orange) 100%);
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(230,0,0,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(230,0,0,0.6);
+        }
+        
+        .urgency {
+            margin-top: 20px;
+            font-size: 1.1em;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--red) 100%);
+            padding: 12px 25px;
+            border-radius: 25px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--red) 0%, var(--orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Highlights */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .highlight-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s;
+            border-top: 4px solid transparent;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-top-color: var(--orange);
+        }
+        
+        .highlight-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-card h3 {
+            color: var(--dark-gray);
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .highlight-card p {
+            color: var(--medium-gray);
+        }
+        
+        /* Team Spirit Section */
+        .team-spirit {
+            background: var(--light-gray);
+            padding: 80px 20px;
+        }
+        
+        .team-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .team-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, #ddd 0%, #ccc 100%);
+            aspect-ratio: 1;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--medium-gray);
+            font-size: 0.9em;
+            text-align: center;
+            padding: 20px;
+            border: 3px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        .image-placeholder:hover {
+            border-color: var(--orange);
+        }
+        
+        .team-text h2 {
+            text-align: left;
+        }
+        
+        .team-text blockquote {
+            font-size: 1.3em;
+            font-style: italic;
+            color: var(--dark-gray);
+            border-left: 4px solid var(--orange);
+            padding-left: 25px;
+            margin: 30px 0;
+        }
+        
+        .quote-author {
+            font-weight: bold;
+            color: var(--orange);
+            margin-top: 10px;
+        }
+        
+        /* Program Section */
+        .program-timeline {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .day-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .day-item:last-child {
+            border-bottom: none;
+        }
+        
+        .day-number {
+            background: linear-gradient(135deg, var(--red) 0%, var(--orange) 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(230,0,0,0.3);
+        }
+        
+        .day-content h4 {
+            color: var(--dark-gray);
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+        
+        .day-content p {
+            color: var(--medium-gray);
+        }
+        
+        /* Target Audience */
+        .target-audience {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, #000000 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .target-audience h2 {
+            color: white;
+            background: none;
+            -webkit-text-fill-color: white;
+        }
+        
+        .target-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            font-size: 1.2em;
+        }
+        
+        .target-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 12px 25px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .checkmark {
+            font-size: 1.5em;
+            color: var(--orange);
+        }
+        
+        /* Form Section */
+        .form-section {
+            background: var(--light-gray);
+        }
+        
+        .form-container {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--dark-gray);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, var(--red) 0%, var(--orange) 100%);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(230,0,0,0.3);
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230,0,0,0.4);
+        }
+        
+        /* FAQ */
+        .faq-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--orange);
+        }
+        
+        .faq-item h3 {
+            color: var(--dark-gray);
+            margin-bottom: 10px;
+        }
+        
+        .faq-item p {
+            color: var(--medium-gray);
+        }
+        
+        /* Trust Elements */
+        .trust-elements {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .trust-item {
+            text-align: center;
+        }
+        
+        .trust-icon {
+            font-size: 3em;
+            color: var(--orange);
+            margin-bottom: 10px;
+        }
+        
+        .trust-item h3 {
+            color: var(--dark-gray);
+        }
+        
+        .trust-item p {
+            color: var(--medium-gray);
+        }
+        
+        /* Included Box */
+        .included-box {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--light-gray);
+            border-radius: 15px;
+            border-left: 6px solid var(--orange);
+        }
+        
+        .included-box h3 {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+        
+        .included-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .included-box li {
+            margin-bottom: 12px;
+            color: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .included-box li::before {
+            content: '✓';
+            color: var(--orange);
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .included-box .note {
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--medium-gray);
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+        }
+        
+        /* Footer CTA */
+        .footer-cta {
+            background: var(--dark-gray);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .footer-cta h2 {
+            color: white;
+            margin-bottom: 20px;
+            background: none;
+            -webkit-text-fill-color: white;
+        }
+        
+        .footer-cta .urgency {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--red) 100%);
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        .footer-info {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .footer-info p {
+            font-size: 0.9em;
+            opacity: 0.8;
+            color: var(--light-gray);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 2em;
+            }
+            
+            .hero-details {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .team-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-text h2 {
+                text-align: center;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .trust-elements {
+                gap: 30px;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo">Munich Youngsters</div>
+            <h1>Speedcamp Glungezer</h1>
+            <p class="hero-subtitle">5 Tage Speed, Technik & Team-Spirit auf über 2.000m</p>
+            
+            <div class="hero-details">
+                <div class="hero-detail">
+                    <span>📅</span>
+                    <span>15.-20. Februar 2026</span>
+                </div>
+                <div class="hero-detail">
+                    <span>📍</span>
+                    <span>Glungezer / Tulfes</span>
+                </div>
+                <div class="hero-detail">
+                    <span>👥</span>
+                    <span>13-18 Jahre</span>
+                </div>
+                <div class="hero-detail">
+                    <span>💰</span>
+                    <span>1.000€</span>
+                </div>
+            </div>
+            
+            <a href="#anmeldung" class="cta-button">Jetzt Platz sichern</a>
+            
+            <div class="urgency">⚡ Nur noch 5 Plätze verfügbar!</div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section>
+        <h2>Das erwartet dich</h2>
+        <div class="highlights">
+            <div class="highlight-card">
+                <div class="highlight-icon">🎿</div>
+                <h3>Methodisches Speed-Training</h3>
+                <p>Schritt für Schritt lernst du perfekte Linienführung, Geduld im Kurvenwechsel und Sprungtechnik. Nicht einfach runterheizen – systematisch besser werden.</p>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-icon">🏁</div>
+                <h3>2 echte Super-G Rennen</h3>
+                <p>Am Ende der Woche stellst du dein Können unter Beweis. Rennbedingungen wie die Profis – mit deinem Team als Support.</p>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-icon">⚡</div>
+                <h3>Transfer zu Riesenslalom</h3>
+                <p>Was du im Speed lernst, macht dich auch im RS schneller. Abschließende RS-Trainings zeigen dir den direkten Effekt.</p>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-icon">🤝</div>
+                <h3>Echtes Team-Erlebnis</h3>
+                <p>5 Tage zusammen leben, trainieren und wachsen. Hier entstehen Freundschaften fürs Leben.</p>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-icon">🛡️</div>
+                <h3>Maximale Sicherheit</h3>
+                <p>Komplette B-Netz-Absicherung, professionelle Streckenposten, klare Regeln. Bei Geschwindigkeiten bis 100km/h steht Sicherheit an erster Stelle.</p>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-icon">🏔️</div>
+                <h3>Premium Location</h3>
+                <p>Glungezer bietet perfekte Bedingungen für Speed-Training. Professionelle Infrastruktur auf über 2.000m.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Spirit Section -->
+    <div class="team-spirit">
+        <div class="team-content">
+            <div class="team-images">
+                <div class="image-placeholder">Foto: Team beim gemeinsamen Aufwärmen</div>
+                <div class="image-placeholder">Foto: Jubel im Zielraum</div>
+                <div class="image-placeholder">Foto: Gemeinsame Video-Analyse</div>
+                <div class="image-placeholder">Foto: Abendprogramm zusammen</div>
+            </div>
+            
+            <div class="team-text">
+                <h2>Mehr als Training. Ein Team.</h2>
+                <p>Was die Munich Youngsters ausmacht? Der Spirit. Bei uns trainierst du nicht einfach mit anderen – du wirst Teil einer echten Gemeinschaft.</p>
+                
+                <blockquote>
+                    "Bei den Munich Youngsters fühlt es sich nicht wie Training an. Es ist wie mit Freunden Ski fahren, nur dass man nebenbei mega viel lernt. Die Crew pusht dich, feiert mit dir und ist auch da, wenn's mal nicht läuft."
+                    <div class="quote-author">– Max, 16 Jahre, seit 2 Jahren dabei</div>
+                </blockquote>
+                
+                <p>Das Speedcamp ist intensiv, herausfordernd und manchmal auch hart. Aber mit den richtigen Leuten an deiner Seite macht genau das den Unterschied.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Program Section -->
+    <section>
+        <h2>Das Programm</h2>
+        <div class="program-timeline">
+            <div class="day-item">
+                <div class="day-number">SO</div>
+                <div class="day-content">
+                    <h4>Anreise & Kennenlernen</h4>
+                    <p>Anreise am Abend. Gemeinsames Abendessen, Kennenlernen der Gruppe und Besprechung der Woche. Check der Ausrüstung.</p>
+                </div>
+            </div>
+            
+            <div class="day-item">
+                <div class="day-number">MO</div>
+                <div class="day-content">
+                    <h4>Grundlagen & Teilabschnitte</h4>
+                    <p>Einfahren, Streckenkunde, erste Teilabschnitte. Wir starten methodisch – Sicherheit und Technik stehen im Vordergrund.</p>
+                </div>
+            </div>
+            
+            <div class="day-item">
+                <div class="day-number">DI</div>
+                <div class="day-content">
+                    <h4>Linienführung & Geduld</h4>
+                    <p>Fokus auf perfekte Linien und Geduld im Kurvenwechsel. Längere Abschnitte, Video-Analyse, individuelle Tipps.</p>
+                </div>
+            </div>
+            
+            <div class="day-item">
+                <div class="day-number">MI</div>
+                <div class="day-content">
+                    <h4>Sprungtechnik & Mut</h4>
+                    <p>Die anspruchsvollen Passagen. Sprungtechnik trainieren, Mut aufbauen. Schrittweise die komplette Strecke fahren.</p>
+                </div>
+            </div>
+            
+            <div class="day-item">
+                <div class="day-number">DO</div>
+                <div class="day-content">
+                    <h4>Super-G Rennen & RS-Transfer</h4>
+                    <p>Vormittags: 2 Super-G-Rennen unter Wettkampfbedingungen. Nachmittags: Riesenslalom-Training – spür den Transfer!</p>
+                </div>
+            </div>
+            
+            <div class="day-item">
+                <div class="day-number">FR</div>
+                <div class="day-content">
+                    <h4>Riesenslalom & Abreise</h4>
+                    <p>Finales RS-Training am Vormittag. Gemeinsames Mittagessen, Feedback-Runde, Abschluss und Abreise.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="included-box">
+            <h3>Im Preis enthalten:</h3>
+            <ul>
+                <li>5 Tage professionelles Training mit erfahrenen Trainern</li>
+                <li>Komplette Streckenabsicherung (B-Netze)</li>
+                <li>4 Übernachtungen in Gruppenunterkunft</li>
+                <li>Vollverpflegung (Frühstück, Mittagessen, Abendessen)</li>
+                <li>Lifttickets für alle Trainingstage</li>
+                <li>Video-Analyse & individuelles Feedback</li>
+                <li>Startnummern & Zeitnahme bei den Rennen</li>
+            </ul>
+            <p class="note">Nicht enthalten: Anreise, eigene Ski-Ausrüstung, Versicherung</p>
+        </div>
+    </section>
+
+    <!-- Target Audience Section -->
+    <div class="target-audience">
+        <h2>Ist das Speedcamp für dich?</h2>
+        <p style="font-size: 1.2em; max-width: 800px; margin: 0 auto 20px;">Dieses Camp ist anspruchsvoll und nicht für jeden geeignet. Das bist du:</p>
+        
+        <div class="target-list">
+            <div class="target-item">
+                <span class="checkmark">✓</span>
+                <span>13-18 Jahre alt</span>
+            </div>
+            <div class="target-item">
+                <span class="checkmark">✓</span>
+                <span>Fortgeschrittener Rennläufer</span>
+            </div>
+            <div class="target-item">
+                <span class="checkmark">✓</span>
+                <span>Rennsport-Erfahrung</span>
+            </div>
+            <div class="target-item">
+                <span class="checkmark">✓</span>
+                <span>Diszipliniert & fokussiert</span>
+            </div>
+            <div class="target-item">
+                <span class="checkmark">✓</span>
+                <span>Teamplayer</span>
+            </div>
+        </div>
+        
+        <p style="margin-top: 40px; font-size: 1.1em; max-width: 700px; margin-left: auto; margin-right: auto;">
+            <strong>Wichtig:</strong> Bei Geschwindigkeiten bis 100km/h ist absolute Konzentration und Disziplin erforderlich. Wer die Anweisungen der Trainer nicht befolgt, muss das Camp verlassen. Sicherheit geht vor!
+        </p>
+    </div>
+
+    <!-- Form Section -->
+    <section class="form-section" id="anmeldung">
+        <h2>Jetzt anmelden</h2>
+        <div class="form-container">
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em; color: var(--orange); font-weight: bold;">
+                ⚡ Nur noch 5 Plätze verfügbar – First come, first served!
+            </p>
+            
+            <form id="anmeldeform">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="vorname">Vorname *</label>
+                        <input type="text" id="vorname" name="vorname" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nachname">Nachname *</label>
+                        <input type="text" id="nachname" name="nachname" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="geburtsdatum">Geburtsdatum *</label>
+                        <input type="date" id="geburtsdatum" name="geburtsdatum" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="verein">Aktueller Verein / Skischule</label>
+                        <input type="text" id="verein" name="verein">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="erfahrung">Rennsport-Erfahrung *</label>
+                    <select id="erfahrung" name="erfahrung" required>
+                        <option value="">Bitte wählen...</option>
+                        <option value="1-2jahre">1-2 Jahre Rennerfahrung</option>
+                        <option value="3-4jahre">3-4 Jahre Rennerfahrung</option>
+                        <option value="5plus">5+ Jahre Rennerfahrung</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="disziplinen">In welchen Disziplinen bist du aktiv?</label>
+                    <input type="text" id="disziplinen" name="disziplinen" placeholder="z.B. Slalom, Riesenslalom, Super-G">
+                </div>
+                
+                <h3 style="margin: 30px 0 20px; color: var(--dark-gray);">Kontaktdaten Eltern / Erziehungsberechtigte</h3>
+                
+                <div class="form-group">
+                    <label for="eltern-name">Name *</label>
+                    <input type="text" id="eltern-name" name="eltern-name" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">E-Mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefon">Telefon *</label>
+                        <input type="tel" id="telefon" name="telefon" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nachricht">Nachricht / Besondere Hinweise</label>
+                    <textarea id="nachricht" name="nachricht" placeholder="Gibt es etwas, das wir wissen sollten? Allergien, Verletzungen, spezielle Wünsche..."></textarea>
+                </div>
+                
+                <div class="form-group" style="margin-top: 30px;">
+                    <label style="display: flex; align-items: start; gap: 10px; font-weight: normal;">
+                        <input type="checkbox" required style="width: auto; margin-top: 4px;">
+                        <span>Ich habe die Teilnahmebedingungen gelesen und akzeptiere, dass bei Nichtbefolgen der Sicherheitsanweisungen ein Ausschluss vom Camp erfolgen kann. *</span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="submit-button">Verbindlich anmelden</button>
+                
+                <p style="text-align: center; margin-top: 20px; font-size: 0.9em; color: var(--medium-gray);">
+                    * Pflichtfelder | Nach dem Absenden erhaltet ihr eine Bestätigung per E-Mail mit weiteren Details zur Bezahlung und Vorbereitung.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section>
+        <h2>Häufige Fragen</h2>
+        
+        <div class="faq-item">
+            <h3>Wie ist die Gruppengröße?</h3>
+            <p>Wir nehmen maximal 5 externe Teilnehmer auf, die mit unseren bestehenden Team-Mitgliedern trainieren. So garantieren wir intensive Betreuung und echten Team-Zusammenhalt. Das Trainer-Athleten-Verhältnis liegt bei ca. 1:8.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Muss ich Super-G-Erfahrung haben?</h3>
+            <p>Nein, Super-G-Vorerfahrung ist nicht zwingend nötig. Du solltest aber ein sicherer, fortgeschrittener Rennläufer sein mit Erfahrung in Slalom und/oder Riesenslalom. Das methodische Programm baut von Grund auf Speed-Technik auf.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Welche Ausrüstung brauche ich?</h3>
+            <p>Du benötigst: Ski (Riesenslalom oder Speed-Ski), Stöcke, Skischuhe, Helm mit Kinnschutz, Rückenprotektor, Rennanzug, Schienbeinschoner. Wir empfehlen zusätzlich eine Gesichtsmaske. Eine detaillierte Packliste erhältst du nach der Anmeldung.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Wie sieht die Unterkunft aus?</h3>
+            <p>Wir übernachten gemeinsam in einer Gruppenunterkunft in Mehrbettzimmern (4-6 Personen). Sanitäranlagen, Aufenthaltsräume und WLAN sind vorhanden. Die gemeinsame Unterkunft ist Teil des Team-Erlebnisses!</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Was passiert bei schlechtem Wetter?</h3>
+            <p>Das Training findet bei jedem Wetter statt – echte Rennläufer trainieren auch bei Schneefall oder Wind. Bei extremen Bedingungen (Sturm, Vereisung) weichen wir auf alternative Trainingsformate aus: Techniktraining, Video-Analyse, Mentaltraining.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Kann ich nur teilweise teilnehmen?</h3>
+            <p>Nein. Das Programm baut methodisch aufeinander auf – jeder Tag ist wichtig für den Lerneffekt und die Sicherheit. Punktuelle Teilnahmen sind nicht möglich. Du musst von Sonntag bis Freitag dabei sein.</p>
+        </div>
+    </section>
+
+    <!-- Trust Elements -->
+    <section>
+        <h2>Warum Munich Youngsters?</h2>
+        <div class="trust-elements">
+            <div class="trust-item">
+                <div class="trust-icon">🏆</div>
+                <h3>Erfahrene Trainer</h3>
+                <p>Lizenzierte Trainer mit jahrelanger Rennsport-Erfahrung</p>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-icon">🛡️</div>
+                <h3>Sicherheit First</h3>
+                <p>Professionelle Absicherung, klare Regeln, höchste Standards</p>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-icon">🤝</div>
+                <h3>Echter Team-Spirit</h3>
+                <p>Eine Community, die zusammenhält – das spürt man</p>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-icon">📈</div>
+                <h3>Messbare Erfolge</h3>
+                <p>Systematischer Aufbau für nachhaltige Leistungssteigerung</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <div class="footer-cta">
+        <h2>Bereit für die Challenge?</h2>
+        <div class="urgency">Nur noch 5 Plätze verfügbar für 15.-20. Februar!</div>
+        <a href="#anmeldung" class="cta-button">Jetzt verbindlich anmelden</a>
+        
+        <div class="footer-info">
+            <p>
+                <strong>Munich Youngsters</strong><br>
+                Race Performance Center<br>
+                E-Mail: info@race-performance-center.de<br>
+                Web: www.race-performance-center.de
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        document.getElementById('anmeldeform').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Demo-Modus: In der Live-Version würden die Daten jetzt an euer Anmeldesystem gesendet.\n\nDie Anmeldung wäre damit abgeschlossen und ihr erhaltet eine Bestätigungs-E-Mail.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
